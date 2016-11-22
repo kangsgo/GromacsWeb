@@ -1,0 +1,17 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<main class="container">
+<div class="row">
+        <article class="col-md-9 col-sm-9 main-content" role="main">         
+          <header>
+            <h3>{{ bash.title }}</h3>
+          </header>
+          <p>发布人：{{ bash.user }}</p>{% if request.user.is_superuser %}<p>操作： <a href="{% url 'bash_edit' bash.id %}">编辑内容</a></span></p>{% endif %}<br/>
+                                    {{ bash.content|safe }}
+        </article>
+      </div>
+    </main>
+      </div>
+    </main>
+{% endblock %}

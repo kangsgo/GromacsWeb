@@ -1,0 +1,28 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+{% block content %}
+<main class="container">
+<div class="row">
+{% include "course_sibar.html" %}
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1>{{soft.title}}：</h1>
+            <p>编辑作者：{{soft.user}}</p>
+            <p>官方网址：{{soft.url}}</p>
+          </header>
+
+          <section>
+            <h2 id="basic">软件介绍</h2>
+            {{ soft.content |safe }}
+          </section>
+
+
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+{% endblock %}
+

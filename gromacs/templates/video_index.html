@@ -1,0 +1,40 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<main class="container">
+<div class="row">
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">         
+          <header>
+            <h1>视频</h1>
+          </header>
+            
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+      <caption><a type="button" href="{% url "video_add" %}" class="btn btn-block btn-primary">发布新的视频</a>.</caption>
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>发布人</th>
+        <th>发布日期</th>
+      </tr>
+    </thead>
+    <tbody>
+         {% for video in video %}
+      <tr>
+        <td><a href="{% url "video_detail" video_id=video.id %}" >{{ video.title }}</a></td>
+        <td>{{ video.user }}</td>
+        <td>{{ video.date_time }}</td>
+      </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+        </article>
+        <!-- END Main content -->
+ 
+      </div>
+    </main>
+{% endblock %} 

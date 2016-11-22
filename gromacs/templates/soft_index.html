@@ -1,0 +1,29 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<main class="container">
+<div class="row">
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">         
+          <header>
+            <h1>软件列表</h1>
+          </header>
+            
+<div class="table-responsive">
+<caption><a type="button" href="{% url "soft_add" %}" class="btn btn-block btn-primary">发布新的软件</a>.</caption>
+<ul class="list-view">
+      {% for soft in soft %}
+  <li>
+    <h5><a href="{% url "software_detail" software_id=soft.id %}">{{ soft.title }}</a></h5>
+    <p class="meta-data"><a href="{{ soft.url }}" target="_blank" >访问官方网站</a> | {{soft.date_time }} | {{soft.user}}</p>
+    <p>{{ soft.content |truncatechars:"75" }}</p>
+  </li>
+    {% endfor %}
+</div>
+
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+{% endblock %} 

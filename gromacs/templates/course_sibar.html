@@ -1,0 +1,13 @@
+ 
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+          <ul class="sidenav dropable sticky">
+            <li><a href="#">软件概述</a></li>
+            {% for course in course %}
+            <li>
+              <a href="{% url "course_detail" software_id=soft.id course_id=course.id %}">{{ course.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+        <!-- END Sidebar -->

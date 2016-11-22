@@ -1,0 +1,39 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<main class="container">
+<div class="row">
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">         
+          <header>
+            <h1>脚本</h1>
+          </header>
+            
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+      <caption><a type="button" href="{% url "bash_add" %}" class="btn btn-block btn-primary">发布新的脚本</a>.</caption>
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>发布人</th>
+        <th>发布日期</th>
+      </tr>
+    </thead>
+    <tbody>
+         {% for bash in bash %}
+      <tr>
+        <td><a href="{% url "bash_detail" bash_id=bash.id %}" >{{ bash.title }}</a></td>
+        <td>{{ bash.user }}</td>
+        <td>{{ bash.date_time }}</td>
+      </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+        </article>
+        <!-- END Main content -->
+       </div>
+    </main>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+
+          <!--<div class="widget">
+            <h5 class="widget-title">Search</h5>
+            <div class="widget-body">
+              <form method="get">
+                <input class="form-control" type="text" name="s" placeholder="Enter your text" onfocus="this.placeholder=''" onblur="this.placeholder='Enter your text'" value="">
+              </form>
+            </div>
+          </div>-->
+
+          <div class="widget widget_categories">
+            <h5 class="widget-title">分类页面</h5>
+            <ul class="widget-body">
+                {% for categeory in categeory %}
+              <li class="cat-item"><a href="#">{{categeory.title}}</a></li>
+                {%  endfor %}
+            </ul>
+          </div>
+
+          <div class="widget widget_tag_cloud">
+            <h5 class="widget-title">推广区</h5>
+            <div class="widget-body">
+
+            </div>
+          </div>
+
+        </aside>
+        <!-- END Sidebar -->
+

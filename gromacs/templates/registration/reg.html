@@ -1,0 +1,100 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+{% block content %}
+      <div class="banner banner-sm" style="background-color: #5cc7b2">
+        <div class="container text-center text-white">
+          <br><br>
+          <h1>用户注册</h1>
+          <h5>Read the <strong>latest news</strong> of the product right here.</h5>
+        </div>
+      </div>
+      <!-- END Banner -->
+    </header>
+    <main class="container">
+      <div class="row">
+        <h2 style="">用户注册</h2>
+        <!-- Main content -->
+        <div class="col-md-8 col-sm-8 main-content" role="main" style=" float: none; display: block; margin-left: auto; margin-right: auto; ">
+              <form action="/reg/" method="post" id="register-form" class="comment-form">
+                                   {% csrf_token %}
+                                        <div class="row">
+                                            {% for field in form %}
+                                              {{ field.label_tag }}
+                                              {{ field |add_class:"form-control" }}
+                                            {% endfor %}
+                                         </div>
+                                     <div class="col-md-8 col-sm-8 pull-right">
+                                      <a href="{% url 'django.contrib.auth.views.login' %}" class="new-user">登录</a> / <a href="{% url 'password_reset' %}" class="reset">忘记密码 ?</a>
+                                     </div>
+                                     <div class="col-md-8 col-sm-8">
+                                     <input type="hidden" name="next" value="{{ next }}" />
+                                      <p class="form-submit"><input name="submit" type="submit" id="submit" class="btn btn-lg btn-teal" value="注册"></p>
+                                     </div>
+             </form>
+        </div>
+        <h2></h2>
+      </div>
+    </main>
+{% endblock %}
+
+<section class="login-page fadeInDown-animation hide show animated fadeInDown">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="login-form register">
+                                <div class="login-title">
+                                    <span class="icon"><i class="fa fa-group"></i></span>
+                                    <span class="text">Register</span>
+                                </div><!-- End Title -->
+                                <form method="post" action="/reg/" id="register-form">
+                                {% csrf_token %}  
+                                    <div class="row">
+                                      {% for field in form %}
+                                        <div class="col-md-12 col-sm-12">
+                                              <div class="col-md-4 col-sm-4" style="height: 79px;text-align: center;line-height: 79px;">
+                                               {{ field.label_tag }}
+                                              </div>
+                                              <div class="col-md-8 col-sm-8">
+                                            <div class="input">
+                                              {% if field == form.password %}
+                                              {{ field |add_type:"password" }}
+                                              {% else %}
+                                              {{ field }}
+                                              {% endif %} 
+                                              </div>
+                                               {{ field.errors }}
+                                            </div>
+                                        </div><!-- end username -->
+                                        {% endfor %}
+                                        <div class="col-md-12">
+                                            <div class="input clearfix">
+                                                <input type="submit" id="reg_submit" class="submit-input grad-btn ln-tr" value="注册">
+                                            </div>
+                                        </div><!-- end submit -->
+                                    </div><!-- end row -->
+                                </form><!-- End form -->
+                            </div><!-- end login form -->
+                            <div class="login-options">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr fb">Login with Facebook Account</a>
+                                    </div><!-- end FB login -->
+                                    <div class="col-md-6 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr gp">Login with Google Account</a>
+                                    </div><!-- end GP login -->
+                                    <div class="col-md-6 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr tw">Login with Twitter Account</a>
+                                    </div><!-- end TW login -->
+                                    <div class="col-md-6 col-sm-6">
+                                        <a href="#" class="login-op-btn grad-btn ln-tr ya">Login with Yahoo Account</a>
+                                    </div><!-- end YA login -->
+                                </div>
+                            </div><!-- end login optionss -->
+                        </div><!-- end col-md-8/offset -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </section>
+
+
+

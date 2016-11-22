@@ -1,0 +1,27 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+{% block content %} 
+<main class="container">
+<div class="row">
+<article class="col-md-12 col-sm-12 main-content" role="main"> 
+ {% if course_id %}
+ <h2>编辑教程</h2>
+ <form action="/software/{{ software_id }}/{{ course_id }}/edit/" enctype="multipart/form-data" method="POST">
+{% else %}
+<h2>增加教程</h2>
+ <form action="/software/{{ software_id }}/add/" enctype="multipart/form-data" method="POST">
+{% endif %}
+ {% csrf_token %}  
+    {% for field in form %}
+      <div class="fieldWrapper">
+         {{ field.label_tag }}{{ field |add_class:"form-control"}} 
+         {{ field.errors }}
+      <div>
+    {% endfor %}
+    <div class="fieldWrapper"><p class="form-submit"><input name="submit" type="submit" id="submit" class="btn btn-lg btn-teal" value="提交内容"><p><div>
+  <form>
+  </article>
+      </div>
+    </main>
+{% endblock %} 

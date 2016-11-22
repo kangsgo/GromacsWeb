@@ -1,0 +1,17 @@
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="{% url "index" %}">网站首页</a></li>
+              <li><a href="{% url "software_index" %}">软件</a></li>
+              <li><a href="{% url "blog_index" %}">博客</a></li>
+              <li><a href="{% url "video_index" %}">视频</a></li>
+              <li><a href="{% url "bash_index" %}">脚本</a></li>
+              {% if request.user.is_authenticated %}
+              <li class="hero"><a href="{% url "profile" %}">用户中心</a></li>
+              {% else %}
+              <li class="hero"><a href="{% url "django.contrib.auth.views.login" %}">登录</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          <!-- END Top navbar -->

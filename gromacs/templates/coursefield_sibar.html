@@ -1,0 +1,20 @@
+ 
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+          <ul class="sidenav dropable sticky">
+            <li><a href="{% url 'software_index'  %}{{ software_id }}">软件概述{{software_id}}</a></li>
+            {% for softcourse in softcourse %}
+            <li>
+              <a href="{% url 'software_index'  %}{{ software_id }}/{{ softcourse.id }}">{{ softcourse.title }}</a>
+              {% if softcourse.id == course.id %}
+               <ul>
+                 {% for coursefeild in coursefeild %}
+                <li><a href="#{{ coursefeild.tags }}">{{ coursefeild.tags }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+        <!-- END Sidebar -->

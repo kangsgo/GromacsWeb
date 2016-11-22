@@ -1,0 +1,30 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<main class="container">
+<div class="row">
+       {% include 'coursefield_sibar.html' %}
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">         
+          <header>
+            <h1>{{ course.title }}</h1>
+            <p>编辑作者：{{ course.user }}.</p>
+            <ol class="toc">
+              {% for coursefeild in coursefeild %}
+              <li><a href="#{{ coursefeild.tags }}">{{ coursefeild.tags }}</a></li>
+              {% endfor %}
+            </ol>
+          </header>
+            {% for coursefeild in coursefeild %}
+          <section>
+            <h2 id="{{ coursefeild.tags }}">{{ coursefeild.tags }}</h2>
+               {{ coursefeild.content|safe }}
+          </section>
+           {% endfor %}
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+{% endblock %} 
+
+

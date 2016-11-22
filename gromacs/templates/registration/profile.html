@@ -1,0 +1,227 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}  
+<main class="container">
+<div class="row">
+<article class="col-md-12 col-sm-12 main-content" role="main">    
+    <h2>个人中心</h2>
+<table class="table">
+  <caption><a type="button" class="btn btn-sm btn-success" href="{% url 'soft_add' %}" >增加新的软件</a></caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>软件名称</th>
+      <th>所属分类</th>
+      <th>发布日期</th>
+      <th>-</th>
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if soft %}
+      {% for soft in soft %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.title }}</td>
+      <td>{{ soft.categeory }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'course_add' soft.id %}" >增加新的教程</a> 
+      </td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'software_index' %}{{soft.id}}" >查看</a> 
+
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'soft_edit' soft.id %}" >编辑</a> 
+
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('删除软件内的教程，视频，脚本均会被删除，确实要删除吗?'))location='{% url 'soft_delete' soft.id %}'" >删除</a>    
+      </td>
+    </tr>
+    {% endfor %}
+     {% else %}
+    <tr>
+      <td scope="row" colspan="6">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+<table class="table">
+  <caption><a type="button" class="btn btn-sm btn-success" href="{% url 'blog_add' %}" >增加新的博客</a></caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>博客标题</th>
+      <th>所属分类</th>
+      <th>发布日期</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if blog %}
+      {% for soft in blog %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.title }}</td>
+      <td>{{ soft.categeory }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'blog_index' %}{{soft.id}}" >查看</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'blog_edit' soft.id %}" >编辑</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('确实要删除吗?'))location='{% url 'blog_delete' soft.id %}'" >删除</a>  
+      </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td scope="row" colspan="5">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<table class="table">
+      <caption><a type="button" class="btn btn-sm btn-success" href="{% url 'video_add' %}" >增加新的视频</a></caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>视频名称</th>
+      <th>所属软件</th>
+      <th>发布日期</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if video %}
+      {% for soft in video %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.title }}</td>
+      <td>{{ soft.software }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'video_index' %}{{soft.id}}" >查看</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'video_edit' soft.id %}" >编辑</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('确实要删除吗?'))location='{% url 'video_delete' soft.id %}'" >删除</a>  
+      </td>
+    </tr>
+    {% endfor %}
+         {% else %}
+    <tr>
+      <td scope="row" colspan="5">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<table class="table">
+  <caption><a type="button" class="btn btn-sm btn-success" href="{% url 'bash_add' %}" >增加新的脚本</a></caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>脚本名称</th>
+      <th>所属分类</th>
+      <th>发布日期</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if bash %}
+      {% for soft in bash %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.title }}</td>
+      <td>{{ soft.categeory }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'bash_index' %}{{soft.id}}" >查看</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'bash_edit' soft.id %}" >编辑</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('确实要删除吗?'))location='{% url 'bash_delete' soft.id %}'" >删除</a>    
+      </td>
+    </tr>
+    {% endfor %}
+         {% else %}
+    <tr>
+      <td scope="row" colspan="5">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<table class="table">
+  <caption>教程，增加教程请到软件页面</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>教程名称</th>
+      <th>所属软件</th>
+      <th>发布日期</th>
+      <th>增加教程片段</th>
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% if course %}
+      {% for soft in course %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.title }}</td>
+      <td>{{ soft.software }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'coursefield_add' soft.software.id soft.id %}" >增加教程片段</a> 
+      </td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'course_detail' soft.software.id soft.id %}" >查看</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'course_edit' soft.software.id soft.id %}" >编辑</a> 
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('确实要删除吗?'))location='{% url 'course_delete' soft.software.id soft.id %}'" >删除</a>  
+      </td>
+    </tr>
+    {% endfor %}
+         {% else %}
+    <tr>
+      <td scope="row" colspan="6">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<table class="table">
+  <caption>增加新的教程片段请到教程页面</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>片段标签</th>
+      <th>所属教程</th>
+      <th>发布时间</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if coursefield %}
+      {% for soft in coursefield %}
+    <tr>
+      <th scope="row">{{ soft.id }}</th>
+      <td>{{ soft.tags }}</td>
+      <td>{{ soft.course }}</td>
+      <td><code>{{ soft.date_time }}</code></td>
+      <td>
+      <a type="button" class="btn btn-outline btn-xs btn-primary" href="{% url 'course_detail' soft.course.software.id soft.id %}#{{ soft.tags }}" >查看</a> 
+
+      <a type="button" class="btn btn-outline btn-xs btn-success" href="{% url 'coursefield_edit' soft.id %}" >编辑</a> 
+
+      <a type="button" class="btn btn-outline btn-xs btn-danger" href="javascript:if(confirm('确实要删除吗?'))location='{% url 'coursefield_delete' soft.id %}'" >删除</a>  
+      </td>
+    </tr>
+    {% endfor %}
+         {% else %}
+    <tr>
+      <td scope="row" colspan="5">暂无数据</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+</article>
+    </div>
+    </main>
+{% endblock %}
+
+

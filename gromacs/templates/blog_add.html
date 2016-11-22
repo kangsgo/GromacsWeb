@@ -1,0 +1,29 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+{% block content %}
+<main class="container">
+<div class="row">
+<article class="col-md-9 col-sm-9 main-content" role="main">    
+{% if blog_id %}
+<h2>编辑博客</h2>
+ <form action="/blog/{{ blog_id }}/edit/" enctype="multipart/form-data" method="POST">
+{% else %}
+<h2>增加博客</h2>
+ <form action="/blog/add/" enctype="multipart/form-data" method="POST">
+{% endif %}
+{% csrf_token %}  
+    {% for field in form %}
+      <div class="fieldWrapper">
+         <p>{{ field.label_tag }}</p>
+         <p>{{ field |add_class:"form-control"}}</p> 
+         <p>{{ field.errors }}</p>
+      <div>
+        {{ form.media }}
+    {% endfor %}
+    <div class="fieldWrapper"><p class="form-submit"><input name="submit" type="submit" id="submit" class="btn btn-lg btn-teal" value="提交内容"><p><div>
+  <form>
+</article>
+      </div>
+    </main>
+{% endblock %}

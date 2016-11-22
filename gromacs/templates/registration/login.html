@@ -1,0 +1,54 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% load myfilters %}
+{% block content %}
+      <div class="banner banner-sm" style="background-color: #5cc7b2">
+        <div class="container text-center text-white">
+          <br><br>
+          <h1>用户登录</h1>
+          <h5>Read the <strong>latest news</strong> of the product right here.</h5>
+        </div>
+      </div>
+      <!-- END Banner -->
+    </header>
+    <main class="container">
+      <div class="row">
+        <h2 style="">登录中心</h2>
+        <!-- Main content -->
+        <div class="col-md-8 col-sm-8 main-content" role="main" style=" float: none; display: block; margin-left: auto; margin-right: auto; ">
+              <form action="{% url 'django.contrib.auth.views.login' %}" method="post" id="login-form" class="comment-form">
+                            {% csrf_token %}
+                                    <div class="row">
+                                        {% if form.errors %}
+                                        <p class="col-md-12 col-sm-12">
+                                            你的用户名和密码不匹配，请重试
+                                        </p>
+                                        <br/>
+                                        {% endif %}
+                                        {% if next %}
+                                          {% if user.is_authenticated %}
+                                          <p class="col-md-12 col-sm-12">Your account doesn't have access to this page. To proceed,
+                                         please login with an account that has access.</p>
+                                       {% else %}
+                                         <p class="col-md-12 col-sm-12">请登录查看此页面.</p>
+                                         <div class="col-md-8 col-sm-8">
+                                       {% endif %}
+                                       {% endif %}
+                                       {% for field in form %}
+                                       {{ field.label_tag }}
+                                       {{ field | add_class:"form-control"}}
+                                     {% endfor %}
+                                         </div>
+                                     <div class="col-md-8 col-sm-8 pull-right">
+                                      <a href="{% url 'reg' %}" class="new-user">创建新的账户</a> / <a href="{% url 'password_reset' %}" class="reset">忘记密码 ?</a>
+                                     </div>
+                                     <div class="col-md-8 col-sm-8">
+                                     <input type="hidden" name="next" value="{{ next }}" />
+                                      <p class="form-submit"><input name="submit" type="submit" id="submit" class="btn btn-lg btn-teal" value="登录"></p>
+                                     </div>
+             </form>
+        </div>
+        <h2></h2>
+      </div>
+    </main>
+{% endblock %}

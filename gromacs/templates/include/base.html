@@ -1,0 +1,67 @@
+{% load staticfiles %}
+{% load myfilters %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="gromacs交流社区">
+    <meta name="keywords" content="gromacs,autodock,NAMD,amber,linux">
+
+    <title>GROMACS中文社区</title>
+
+    <!-- Styles -->
+    <link href="{% static "thedocs/assets/css/theDocs.all.min.css" %}" rel="stylesheet">
+    <link href="{% static "thedocs/assets/css/custom.css" %}" rel="stylesheet">
+
+    <!-- Fonts -->
+    <!--<link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>-->
+
+    <!-- Favicons -->
+    <link rel="icon" href="{% static "thedocs/assets/img/favicon.ico" %}">
+  </head>
+
+  <body>
+
+    <header class="site-header navbar-fullwidth">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static "thedocs/assets/img/logo.png" %}"  alt="logo"></a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+         {% include 'include/header.html' %}
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->     
+       {% block content %}
+        <!-- Main content -->
+        <!-- End Main -->
+       {% endblock %}
+    <!-- Footer -->
+  {% include "include/footer.html" %}
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="{% static "thedocs/assets/js/theDocs.all.min.js" %}"></script>
+    <script src="{% static "thedocs/assets/js/custom.js" %}"></script>
+    <!--<script src="{% static "thedocs/assets/js/jquery.min.js" %}"></script>-->
+
+  </body>
+</html>

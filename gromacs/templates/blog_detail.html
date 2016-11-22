@@ -1,0 +1,146 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+     <!-- Banner -->
+      <div class="banner banner-sm" style="background-color: #5cc7b2">
+        <div class="container text-center text-white">
+          <br><br>
+          <h1>{{post.title}}</h1>
+          <h5>Read the <strong>latest news</strong> of the product right here.</h5>
+        </div>
+      </div>
+      <!-- END Banner -->
+    </header>
+    <main class="container">
+      <div class="row">
+
+        <!-- Main content -->
+        <div class="col-md-9 col-sm-9 main-content" role="main">
+
+          <article class="post">
+            <header>
+              <h2><a href="#">{{post.title}}</a></h2>
+              <ul class="post-meta">
+                <li><i>分类: </i> <span><a href="#">{{post.categeory}}</a></span></li>
+                <li><i>日期: </i> <span>{{post.date_time}}</span></li>
+                <li><i>作者: </i> <span>{{post.user}}</span></li>
+                {% if request.user.is_superuser %}
+                <li><i>操作: </i> <span><a href="{% url 'blog_edit' post.id %}">编辑内容</a></span></li>
+                {% endif %}
+              </ul>
+            </header>
+
+            <div class="blog-content">
+              {{post.content}}
+
+            </div>
+          </article>
+        </div>
+        <!-- END Main content -->
+
+{% include 'blog_sidebar.html' %}
+
+      </div>
+    </main>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <article class="post single fadeInDown-animation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 main-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="featured-image">
+                                        <img src="{{ MEDIA_URL }}{{ post.image_url_i }}" style="width:770px;height:350px" alt="" class="img-responsive">
+                                    </div><!-- End featured image -->
+                                    <div class="entry clearfix">
+                                        <h3 class="single-title fl">
+                                            <span class="post-type-icon"><i class="fa fa-comment"></i></span>
+                                            <a href="#" class="ln-tr">{{post.title}}</a>
+                                        </h3><!-- End Title -->
+                                        <div class="meta fr">
+                                            <div class="date ib">
+                                                <span class="icon"><i class="fa fa-clock-o"></i></span>
+                                                <span class="text">Dec 26, 2014</span>
+                                            </div><!-- date icon -->
+                                            <div class="author ib">
+                                                <span class="icon"><i class="fa fa-user"></i></span>
+                                                <span class="text">作者 : <a class="ln-tr" href="#">Begha</a></span>
+                                            </div><!-- author icon -->
+                                            <div class="comments ib">
+                                                <span class="icon"><i class="fa fa-comments"></i></span>
+                                                <span class="text">Comments : <a class="ln-tr" href="#">22</a></span>
+                                            </div><!-- comments icon -->
+                                        </div><!-- End Meta -->
+                                        <div class="clearfix"></div>
+                                        <div class="content">
+                                            {{ post.content }}
+                                            <p></p>
+                                        </div>
+                                        <div class="share-post clearfix">
+                                            <p class="text fl">Share This Article If You Liked It :)</p>
+                                            <div class="icons fr">
+                                                <ul class="clearfix">
+                                                    <li><a href="#" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="#" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="#" class="gp-icon ln-tr"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#" class="in-icon ln-tr"><i class="fa fa-linkedin"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Entry -->
+
+                                    <div class="comment-form">
+                                        <div class="addcomment-title">
+                                            <span class="icon"><i class="fa fa-comments-o"></i></span>
+                                            <span class="text">Add Your Comment</span>
+                                        </div><!-- End Title -->
+                                        <form method="post" action="/" id="comment-form">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input">
+                                                        <input type="text" id="name" class="name-input" placeholder="Your Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input">
+                                                        <input type="email" id="email" class="email-input" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="input">
+                                                        <textarea name="comment-area" id="comment-area" placeholder="Comment"></textarea>
+                                                        <input type="submit" id="comment-submit" class="submit-input grad-btn ln-tr" value="Send">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form><!-- End form -->
+                                    </div><!-- End comment form -->
+                                </div><!-- End col-md-12 -->
+                            </div><!-- End main content row -->
+                        </div><!-- End Main Content - LEFT -->
+                          {% include "blog_right.html" %}
+                    </div><!-- End main row -->
+                </div><!-- End container -->
+            </article><!-- End Single Article -->
+

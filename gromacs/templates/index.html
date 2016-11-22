@@ -1,0 +1,59 @@
+{% extends "include/base.html" %}
+{% load staticfiles %}
+{% block content %}
+     <!-- Banner -->
+      <div class="banner banner-sm" style="background-color: #5cc7b2">
+        <div class="container text-center text-white">
+          <br><br>
+          <h1>Gromacs中文社区</h1>
+          <h5><strong>简单开源</strong> 的分子模拟社区，欢迎加入.</h5>
+        </div>
+      </div>
+      <!-- END Banner -->
+    </header>
+    <main class="container">
+<div class="row">
+  <h2>关于社区</h2>
+  <div class="col-md-6">
+    <h3>Gromacs社区介绍</h3>
+    <p>Gromacs社区为基于<code>Python</code>以及<code>Django</code>开发的提供gromacs交互分享的社区,网站主要为提供科学与计算机相结合的交流平台</p>
+    <p>如若您初次来到我们社区，您可以查看：<a href="">社区简介</a></p>
+    <p>如若您愿意为我们添砖加瓦，可以通过<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>，注册会员发布内容</p>
+    <p>如若您以加入我们，但是不知如何使用，可以通过<a type="button" class="btn btn-outline btn-xs btn-primary"><i class="fa fa-book">文档中心</i>查阅</a>
+进行查阅</p>
+    <p>如遇到任何问题，可以邮件联系我：<strong class="text-danger">kangsgo@vip.qq.com.</strong></p>
+    <p class="text-primary">本人马上面临考博，若您有意向接纳，也可联系，谢谢！.</p>
+  </div>
+
+  <div class="col-md-6">
+    <div class="jumbotron jumbotron-sm">
+      <div class="container">
+        <h4>管理中心</h4>
+        {% if request.user.is_authenticated %}
+        <p>您可以发布内容和管理您发布的内容</p>
+        <p>如下功能暂未完善：</p>
+        <p>重置密码，找回密码</p>
+        <p><a class="btn btn-primary btn-lg" href="/accounts/profile/" role="button">用户中心</a></p>
+        {% else %}
+        <p>您可以发布注册或登录新增编辑内容</p>
+        <p>如下功能暂未完善：</p>
+        <p>重置密码，找回密码</p>
+        <p>
+          <div class="col-md-2">
+          <a class="btn btn-primary btn-lg" href="/accounts/login/" role="button">登录</a>
+          </div>
+          <div class="col-md-2">
+          <a class="btn btn-success btn-lg" href="/reg" role="button">注册</a>
+          </div>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+    </main>
+{% endblock %}
