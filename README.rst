@@ -1,4 +1,5 @@
 ## Gromacs中文介绍
+
 Gromacs中文社区是一个为分子模拟在线交流制作的开源社区，基于Python3.5以及Django1.84制作，实测Django1.10无法使用，其它版本未做测试。
 
 ## 功能概要
@@ -72,5 +73,3 @@ gromacs中文社区：http://www.gromacs.cn
 ## 联系
 
 kangsgo@163.com 小康
-
-
