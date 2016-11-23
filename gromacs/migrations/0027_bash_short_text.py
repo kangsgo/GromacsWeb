@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import redactor.fields
 
 
 class Migration(migrations.Migration):
@@ -15,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bash',
             name='short_text',
-            field=redactor.fields.RedactorField(verbose_name='Text', default=1),
+            field=models.ForeignKey(null=True, blank=True, verbose_name='分类', to='gromacs.Category'),
             preserve_default=False,
         ),
     ]

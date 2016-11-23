@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 import datetime
 from django.utils.timezone import utc
-import ajaximage.fields
 
 
 class Migration(migrations.Migration):
@@ -21,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='software',
             name='image_url_i',
-            field=ajaximage.fields.AjaxImageField(default=datetime.datetime(2016, 11, 19, 12, 1, 49, 912214, tzinfo=utc)),
+            field=models.ForeignKey(null=True, blank=True, verbose_name='分类', to='gromacs.Category'),
             preserve_default=False,
         ),
     ]
