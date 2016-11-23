@@ -100,7 +100,7 @@ def course_add(request,software_id):
         form=AddCourse(request.POST, instance=course)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('course_index'))
+            return HttpResponseRedirect(reverse('soft_index'))
     else:
         form=AddCourse()
     return render(request,"course_add.html",{'form':form,'software_id':software_id})
@@ -124,7 +124,7 @@ def course_edit(request,software_id,course_id):
         form=EditCourse(request.POST,instance=courseid)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('course_index'))
+            return HttpResponseRedirect(reverse('soft_index'))
     else:
         form=EditCourse(instance=courseid)
     return render(request,"course_add.html",{'form':form,'software_id':software_id,'course_id':course_id})
@@ -138,7 +138,7 @@ def course_delete(request,course_id):
     try:
         course_delete=Course.objects.get(pk=course_id)
         course_delete.delete()
-        return HttpResponseRedirect(reverse('course_index'))
+        return HttpResponseRedirect(reverse('soft_index'))
     except Exception as e:
         return HttpResponse(e)
 
